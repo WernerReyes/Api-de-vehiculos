@@ -121,7 +121,8 @@ export async function seleccionarFabricanteCombustible(e, tipo) {
       // Desabilitamos el bton
       formulario.querySelector('button[type="submit"]').disabled = true;
       formulario.querySelector('button[type="submit"]').classList.add('disabled:bg-[#7691fa]');
-      // Fesabilitamos el input
+      // Desabilitamos el input
+      tipoCombustibleVehiculos.selectedIndex = 0;
       modeloVehiculos.disabled = true;
     }
 
@@ -199,12 +200,12 @@ export function llenarFiltradoOpcionalInput(e) {
 
     case 'combinacionMinimo':
       // Habilitamos la infomacion
-      document.querySelector('#combinacion-minimo').innerHTML = `${e.target.value.toUpperCase() || 'Nda'} <span class="block text-sm text-[#C5C1C1]"> Consumo MPG minimo </span>`
+      document.querySelector('#combinacion-minimo').innerHTML = `${e.target.value.toUpperCase() || 'Nda'} <span class="block text-sm text-[#C5C1C1]"> Combinación MPG minimo </span>`
       break
 
     default:
       // Habilitamos la infomacion
-      document.querySelector('#combinacion-maximo').innerHTML = `${e.target.value.toUpperCase() || 'Nda'} <span class="block text-sm text-[#C5C1C1]"> Consumo MPG minimo </span>`
+      document.querySelector('#combinacion-maximo').innerHTML = `${e.target.value.toUpperCase() || 'Nda'} <span class="block text-sm text-[#C5C1C1]"> Combinación MPG minimo </span>`
       break
   }
 
@@ -214,8 +215,8 @@ export async function aplicarFiltro(e) {
   e.preventDefault();
 
   const { consumoMinimo, consumoMaximo, combinacionMinimo, combinacionMaximo } = filtrados.opcional;
-
-  if (consumoMinimo !== '' && consumoMaximo !== '') {
+       
+  if (consumoMinimo !== '' || consumoMaximo !== '') {
     if (Number(consumoMinimo) > Number(consumoMaximo)) {
       ui.mostrarAlerta(divAlertas, "Error, ingresa correctamente los datos", 'error');
       return;
@@ -227,7 +228,7 @@ export async function aplicarFiltro(e) {
     }
   }
 
-  if (combinacionMinimo !== '' && combinacionMaximo !== '') {
+  if (combinacionMinimo !== '' || combinacionMaximo !== '') {
     if (Number(combinacionMinimo) > Number(combinacionMaximo)) {
       ui.mostrarAlerta(divAlertas, "Error, ingresa correctamente los datos", 'error');
       return;
@@ -287,6 +288,11 @@ export function borrarFiltros() {
   // Desabilitamos la infomacion
   document.querySelector('#tipo-combustible').classList.add('hidden');
   document.querySelector('#modelo').classList.add('hidden');
+  document.querySelector('#year').classList.add('hidden');
+  document.querySelector('#consumo-minimo').innerHTML = `Nda <span class="block text-sm text-[#C5C1C1]"> Consumo MPG minimo </span>`
+  document.querySelector('#consumo-maximo').innerHTML = `Nda <span class="block text-sm text-[#C5C1C1]"> Consumo MPG maximo </span>`
+  document.querySelector('#combinacion-minimo').innerHTML = `Nda <span class="block text-sm text-[#C5C1C1]"> Combinación MPG minimo </span>`
+  document.querySelector('#combinacion-maximo').innerHTML = `Nda <span class="block text-sm text-[#C5C1C1]"> Combinación MPG maximo</span>`
 
 }
 

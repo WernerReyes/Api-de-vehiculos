@@ -18,7 +18,7 @@
     <div
       class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2 lg:gap-6 px-5 py-10 bg-[#151F2D] h-full md:h-screen"
     >
-      <div class="py-10 rounded-[30px] border">
+      <div class="row-start-2 md:row-start-1 py-10 rounded-[30px] border">
         <form id="formulario">
           <div
             class="flex flex-col items-center mx-0 ms:mx-10 md:mx-0 lg:mx-10 mt-6"
@@ -156,7 +156,7 @@
         </form>
       </div>
       <div
-        class="py-10 h-full overflow-auto md:overflow-y-auto md:overflow-x-hidden px-3"
+        class="row-start-3 md:row-start-1 py-10 h-full overflow-auto md:overflow-y-auto md:overflow-x-hidden px-3"
       >
         <h1 class="text-6xl md:text-4xl lg:text-6xl text-white text-center">Vehiculos</h1>
         <div
@@ -165,47 +165,21 @@
           <span
             class="flex items-center bg-[#27354B] pl-2 py-2 rounded-3xl my-3 sm:my-0 md:my-3 lg:my-0"
           >
-            <p id="fabricante" class="text-white">BMW</p>
+            <p id="fabricante" class="text-white"></p>
             <p class="ml-4 rounded-full w-8 h-8 bg-[#F8754C]"></p>
           </span>
           <span
             class="ml-6 flex items-center bg-[#27354B] pl-2 py-2 rounded-3xl"
           >
-            <p id="cantidad-resultados" class="text-white">Concertible</p>
+            <p id="cantidad-resultados" class="text-white"></p>
             <p class="ml-6 rounded-full w-8 h-8 bg-[#F8754C]"></p>
           </span>
         </div>
         <div id="container-vehiculos">
-          <!-- <div
-            class="flex flex-col items-center justify-center mt-10 border border-amber-50 py-5 px-2 rounded-3xl"
-          >
-            <img src="img/img-1.png" alt="" />
-            <div
-              class="flex justify-between text-white w-3/4 sm:w-1/2 md:w-full lg:w-3/4"
-            >
-              <p>BMW 4 Series</p>
-              <p>$51 000</p>
-            </div>
-            <div
-              class="flex flex-col sm:flex-row md:flex-col lg:flex-row sm:justify-evenly text-center text-[#A8A3A3] w-full"
-            >
-              <span
-                >Year
-                <p class="text-white">2019</p></span
-              >
-              <span
-                >Eficiencia de combustible
-                <p class="text-white">2019</p></span
-              >
-              <span
-                >Número de cilindros
-                <p class="text-white">2019</p></span
-              >
-            </div>
-          </div> -->
+          <!--  CONTENIDO DINAMICO -->
         </div>
       </div>
-      <div class="border-0 md:border-l px-2 md:px-7 lg:px-10">
+      <div class="row-start-1 border-0 md:border-l px-2 md:px-7 lg:px-10">
         <div class="relative block w-48">
           <span class="sr-only">Search</span>
           <span class="absolute inset-y-0 left-0 flex items-center pl-2">
