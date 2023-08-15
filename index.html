@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API de vehiculos</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/spinner.css" />
+    <!-- ICONOS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body class="bg-[#151F2D]">
+    <div id="alertas"></div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2 lg:gap-6 px-5 py-10 bg-[#151F2D] h-full md:h-screen"
+    >
+      <div class="py-10 rounded-[30px] border">
+        <form id="formulario">
+          <div
+            class="flex flex-col items-center mx-0 ms:mx-10 md:mx-0 lg:mx-10 mt-6"
+          >
+            <label class="text-white mb-1 lg:self-start lg:mr-10"
+              >Fabricante</label
+            >
+            <select
+              id="fabricante-vehiculo"
+              class="bg-[#4E5A6C] rounded-2xl w-2/3 lg:self-start lg:w-full md:w-4/5 h-10 text-white pl-10"
+            >
+              <option selected>Seleccionar</option>
+              <option value="toyota">Toyota</option>
+              <option value="ford">Ford</option>
+              <option value="honda">Honda</option>
+              <option value="BMW">BMW</option>
+              <option value="mercedes-benz">Mercedes-Benz</option>
+              <option value="nissan">Nissan</option>
+              <option value="Hyundai">hyundai</option>
+              <option value="tesla">Tesla</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 ms:mx-10 md:mx-0 lg:mx-10 mt-6"
+          >
+            <label class="text-white mb-1 lg:self-start lg:mr-10"
+              >Tipo de combustible</label
+            >
+            <select
+              disabled
+              id="tipo-combustible-vehiculo"
+              class="bg-[#4E5A6C] rounded-2xl w-2/3 lg:self-start lg:w-full md:w-4/5 h-10 text-white pl-10"
+            >
+              <option selected>Seleccionar</option>
+              <option value="gas">Gas</option>
+              <option value="diesel">Diesel</option>
+              <option value="electricity">Electrico</option>
+            </select>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 ms:mx-10 md:mx-0 lg:mx-10 mt-6"
+          >
+            <label class="text-white mb-1 lg:self-start lg:mr-10">Modelo</label>
+            <select
+              disabled
+              id="modelo-vehiculo"
+              class="bg-[#4E5A6C] rounded-2xl w-2/3 lg:self-start lg:w-full md:w-4/5 h-10 text-white pl-10"
+            >
+              <option selected>Seleccionar</option>
+              <!-- CONTENIDO DINAMICO -->
+            </select>
+          </div>
+          <div
+            class="mx-0 ms:mx-10 md:mx-0 lg:mx-10 text-center lg:text-start mt-6"
+          >
+            <label class="text-white mb-1 text-center"
+              >Consumo MPG (Opcional)</label
+            >
+            <div
+              class="flex items-center justify-between mx-auto w-4/5 lg:w-full"
+            >
+              <input
+                id="consumo-minimo-vehiculo"
+                class="bg-[#4E5A6C] rounded-2xl w-5/12 h-10 text-center lg:text-start px-5 text-white"
+                type="number"
+                name="consumoMinimo"
+                placeholder="Ingresa el consumo minimo"
+              />
+              <input
+                id="consumo-maximo-vehiculo"
+                class="bg-[#4E5A6C] rounded-2xl w-5/12 h-10 text-center lg:text-start px-5 text-white"
+                type="number"
+                name="consumoMaximo"
+                placeholder="Ingresa el consumo maximo"
+              />
+            </div>
+          </div>
+          <div
+            class="mx-0 ms:mx-10 md:mx-0 lg:mx-10 text-center lg:text-start mt-6"
+          >
+            <label class="block mx-auto text-white mb-1 text-center w-3/4"
+              >Combinación de consumo de combustible (Opcional)</label
+            >
+            <div
+              class="flex items-center justify-between mx-auto w-4/5 lg:w-full"
+            >
+              <input
+                id="combinacion-minimo-vehiculo"
+                class="bg-[#4E5A6C] rounded-2xl w-5/12 h-10 text-center lg:text-start px-5 text-white"
+                type="number"
+                name="combinacionMinimo"
+                placeholder="Ingresa el consumo minimo"
+              />
+              <input
+                id="combinacion-maximo-vehiculo"
+                class="bg-[#4E5A6C] rounded-2xl w-5/12 h-10 text-center lg:text-start px-5 text-white"
+                type="number"
+                name="combinacionMaximo"
+                placeholder="Ingresa el consumo maximo"
+              />
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center mx-0 ms:mx-10 md:mx-0 lg:mx-10 mt-6"
+          >
+            <label class="text-white mb-1 lg:self-start lg:mr-10"
+              >Año de vehiculo (Opcional)</label
+            >
+            <input
+              id="year-vehiculo"
+              class="bg-[#4E5A6C] rounded-2xl w-2/3 md:w-4/5 lg:self-start lg:w-full h-10 text-center lg:text-start lg:pl-10 text-white"
+              type="number"
+              name="year"
+              placeholder="Ingresa el año del vehiculo"
+            />
+          </div>
+          <div
+            class="flex justify-between md:flex-wrap md:justify-center lg:justify-between items-center mx-4 sm:mx-10 mb:mx-0 lg:mx-10"
+          >
+            <button
+              disabled
+              type="submit"
+              class="bg-[#335AF9] px-5 py-3 rounded-2xl mt-6 text-white text-xl disabled:bg-[#7691fa]"
+            >
+              Aplicar filtros
+            </button>
+            <button
+              type="reset"
+              class="bg-[#F8754C] px-5 py-3 rounded-2xl mt-6 text-white text-xl"
+            >
+              Borrar filtros
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        class="py-10 h-full overflow-auto md:overflow-y-auto md:overflow-x-hidden px-3"
+      >
+        <h1 class="text-6xl md:text-4xl lg:text-6xl text-white text-center">Vehiculos</h1>
+        <div
+          class="flex mt-3 flex-wrap items-center justify-center lg:justify-start"
+        >
+          <span
+            class="flex items-center bg-[#27354B] pl-2 py-2 rounded-3xl my-3 sm:my-0 md:my-3 lg:my-0"
+          >
+            <p id="fabricante" class="text-white">BMW</p>
+            <p class="ml-4 rounded-full w-8 h-8 bg-[#F8754C]"></p>
+          </span>
+          <span
+            class="ml-6 flex items-center bg-[#27354B] pl-2 py-2 rounded-3xl"
+          >
+            <p id="cantidad-resultados" class="text-white">Concertible</p>
+            <p class="ml-6 rounded-full w-8 h-8 bg-[#F8754C]"></p>
+          </span>
+        </div>
+        <div id="container-vehiculos">
+          <!-- <div
+            class="flex flex-col items-center justify-center mt-10 border border-amber-50 py-5 px-2 rounded-3xl"
+          >
+            <img src="img/img-1.png" alt="" />
+            <div
+              class="flex justify-between text-white w-3/4 sm:w-1/2 md:w-full lg:w-3/4"
+            >
+              <p>BMW 4 Series</p>
+              <p>$51 000</p>
+            </div>
+            <div
+              class="flex flex-col sm:flex-row md:flex-col lg:flex-row sm:justify-evenly text-center text-[#A8A3A3] w-full"
+            >
+              <span
+                >Year
+                <p class="text-white">2019</p></span
+              >
+              <span
+                >Eficiencia de combustible
+                <p class="text-white">2019</p></span
+              >
+              <span
+                >Número de cilindros
+                <p class="text-white">2019</p></span
+              >
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="border-0 md:border-l px-2 md:px-7 lg:px-10">
+        <div class="relative block w-48">
+          <span class="sr-only">Search</span>
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <i
+              id="btn-buscar"
+              class="ml-2 fa-solid fa-magnifying-glass fa-beat text-[#6F6C6C] cursor-pointer"
+            ></i>
+          </span>
+          <input
+            id="buscar-vehiculo"
+            class="placeholder:text-[#6F6C6C] placeholder:text-lg placeholder:font-normal block bg-transparent w-full border-b border-[#DDD1D1] rounded py-2 pl-12 shadow-sm focus:outline-none focus:border focus:ring-[#DDD1D1] focus:ring-1 sm:text-sm text-[#6F6C6C]"
+            placeholder="Buscar..."
+            type="text"
+            name="search"
+          />
+        </div>
+        <div class="mt-10 text-center">
+          <label class="text-white"
+              >Cantidad de resultados</label
+            >
+          <input
+          id="cantidad-busqueda"
+            type="number"
+            placeholder="Cantidad de resultados"
+            class="mt-1 text-md text-center text-white font-thin font-sans border rounded-2xl boder-[#C1C1C1] bg-transparent py-4 w-full"
+          />
+        </div>
+        <div
+          class="text-white mt-8 text-2xl text-center md:text-start font-extrabold"
+        >
+          <p
+            id="tipo-combustible"
+            class="hidden mx-auto bg-[#101A29] w-2/3 md:w-5/6 lg:w-3/4 p-4 rounded-2xl mb-4"
+          >
+            Devices <span> > </span>
+          </p>
+          <p
+            id="modelo"
+            class="hidden mx-auto bg-[#101A29] w-2/3 md:w-5/6 lg:w-3/4 p-4 rounded-2xl mb-4"
+          >
+            Devices <span> > </span>
+          </p>
+          <p
+            id="year"
+            class="hidden mx-auto bg-[#101A29] w-2/3 md:w-5/6 lg:w-3/4 p-4 rounded-2xl"
+          >
+            Devices <span> > </span>
+          </p>
+        </div>
+        <div
+          class="grid grid-rows-2 grid-cols-2 text-center text-7xl md:text-4xl lg:text-7xl text-white mt-4"
+        >
+          <p
+          id="consumo-minimo" 
+          class="border-r-2 border-b-2 border-[#CECBCB] p-4 md:p-0 md:pb-2">
+            Nda
+            <span class="block text-sm text-[#C5C1C1]"
+              >Consumo MPG minimo</span
+            >
+          </p>
+          <p 
+          id="consumo-maximo" 
+          class="border-b-2 border-[#CECBCB] p-4 md:p-0 md:pb-2">
+            Nda
+            <span class="block text-sm text-[#C5C1C1]"
+              >Consumo MPG maximo</span
+            >
+          </p>
+          <p 
+          id="combinacion-minimo" 
+          class="border-r-2 border-[#CECBCB] p-4 md:p-0 md:pb-2">
+            Nda
+            <span class="block text-sm text-[#C5C1C1]"
+              >Combinación minimo</span
+            >
+          </p>
+          <p 
+          id="combinacion-maximo" 
+          class="p-4 md:p-0 md:pb-2">
+            Nda
+            <span class="block text-sm text-[#C5C1C1]"
+              >Combinación maximo</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
